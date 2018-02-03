@@ -1,7 +1,7 @@
-1)Install all dependencies:
+# 1) Install all dependencies:
 pip install -r requirements.txt
 
-2) Download a pre-trained facenet model.
+# 2) Download a pre-trained facenet model.
 
 This part handles the face -> features conversion. I did not include it in the git repository as it is very large.
 
@@ -20,7 +20,7 @@ Other models can be found here https://github.com/davidsandberg/facenet.
 If you wish to use a different model, make sure to modify the code as all references are to hte model in the github link.
 
 
-3) Setup the training data (can skip if using provided data)
+# 3) Setup the training data (can skip if using provided data)
 
 For every person's face you want to recognize, please make a folder and put images of photos that include their face (and no one else) in there.
 A folder with training photos of talk host Graham Norton and rapper 50 Cent would look like
@@ -32,7 +32,7 @@ Graham
     - photo 2
 
 
-4) Align all the faces and crop the images.
+# 4) Align all the faces and crop the images.
 
 Run the following script, if you want to customise the image size it crops to etc you can do so inside the align_dataset_mtcnn.py file.
 See the parse_arguments method for all the different possible commands
@@ -45,7 +45,7 @@ Without this step facenet will not work correctly.
 Note 1: If at the very end your classifier is still having issues, try deleting all the files in the /training_data_aligned folder and realign the images
 Note 2: This code uses MTCNN to identify faces in an image.
 
-5) Train the classifier (SVM Classifier)
+# 5) Train the classifier (SVM Classifier)
 
 Run the following (which is just an easy to use wrapper for classifier.py):
 src\classifier_train.py
@@ -55,7 +55,7 @@ For a small amount of images any configuration works fine.
 
 To see the different commands for fine tuning see the parse_arguments method in src\classifier.py
 
-6) Run on a video (saved video or webcam)
+# 6) Run on a video (saved video or webcam)
 
 run src\newglint.py
 
@@ -65,7 +65,7 @@ The video will run slowly because running facenet while playing the video is ver
 A video recording output.avi will be saved which will playback at a faster speed.
 
 If you want to use the webcam as an input or change the video speed or the video, please see the code under
-if __name__ == "__main__":
+`if __name__ == "__main__":`
 
 
 
