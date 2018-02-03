@@ -1,3 +1,8 @@
+Thanks to FrozenXZeus for helping me with this code and David Sandberg for providing a lot of background code on this.
+
+https://github.com/FrozenXZeus 
+https://github.com/davidsandberg
+
 # 1) Install all dependencies:
 pip install -r requirements.txt
 
