@@ -156,7 +156,7 @@ def parse_arguments(argv):
 if __name__ == '__main__':
 
     # Project root path to make it easier to reference files
-    project_root_path = os.path.join(os.getcwd(), "..\\..")
+    project_root_path = os.path.join(os.path.abspath(__file__), "..\\..\\..")
 
     # Feel free to replace this and use actual commandline args instead, the main method will still work
     args = lambda :None

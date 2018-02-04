@@ -60,7 +60,9 @@ For a small amount of images any configuration works fine.
 
 To see the different commands for fine tuning see the parse_arguments method in src\classifier.py
 
-# 6) Run on a video (saved video or webcam)
+# 6) 
+
+## a) Run on a video (saved video or webcam)
 
 run src\newglint.py
 
@@ -72,8 +74,9 @@ A video recording output.avi will be saved which will playback at a faster speed
 If you want to use the webcam as an input or change the video speed or the video, please see the code under
 `if __name__ == "__main__":`
 
+## b) Run on images
 
-
+Select your test 
 # #
 Note that these files/folders are in the git ignore
 test_data/video/*

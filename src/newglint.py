@@ -22,7 +22,9 @@ def main(args):
     fourcc = cv2.VideoWriter_fourcc(*'X264')
 
     # Get the path of the classifier and load it
-    classifier_path = os.getcwd() +"\\trained_classifier\\newglint_classifier.pkl"
+    project_root_folder = os.path.join(os.path.abspath(__file__), "..\\..")
+    print (project_root_folder)
+    classifier_path = os.path.join(project_root_folder, "\\trained_classifier\\newglint_classifier.pkl")
     with open(classifier_path, 'rb') as f:
         (model, class_names) = pickle.load(f)
         print("Loaded classifier file")
@@ -33,9 +35,8 @@ def main(args):
         with sess.as_default():
             # Bounding box
             pnet, rnet, onet = align.detect_face.create_mtcnn(sess, "src\\align")
-
             # Get the path of the facenet model and load it
-            facenet_model_path = os.getcwd() + "\\facenet_model\\20170512-110547\\20170512-110547.pb"
+            facenet_model_path = os.path.join(project_root_folder, "\\facenet_model\\20170512-110547\\20170512-110547.pb")
             facenet.load_model(facenet_model_path)
 
             images_placeholder = tf.get_default_graph().get_tensor_by_name("input:0")
