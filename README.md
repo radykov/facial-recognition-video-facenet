@@ -72,7 +72,7 @@ To see the different commands for fine tuning see the parse_arguments method in 
 
 ## a) Run on a video (saved video or webcam)
 
-Download version 1.6.0 of openh264 for you OS from https://github.com/cisco/openh264/releases and move it to the src folder. 
+Download version 1.6.0 of openh264 for you OS (windows 64 bit already included in folder)  from https://github.com/cisco/openh264/releases and move it to the src folder. 
 Without this the code will run but the video won't be saved.
 
 
@@ -99,3 +99,4 @@ Run  `align_dataset_mtcnn`, put the images into the `test/images` folder then ru
 # #
 Note that the images used for training were found public online through Google Image Search and the test video is downloaded from YouTube upon the program running.
 I do not claim any ownership to any of these items and am happy to remove them upon request. Any part of the code which may be against the usage terms of any sites or images is not encouraged to be run and is just there for learning reference.
+Faces for testing are - 50Cent, Graham Norton, Julie Walters, Kate Winslet and Michael Fassbender
