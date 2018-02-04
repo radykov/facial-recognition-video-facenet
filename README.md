@@ -3,7 +3,9 @@ Thanks to FrozenXZeus for helping me with this code and David Sandberg for provi
 https://github.com/FrozenXZeus 
 https://github.com/davidsandberg
 
-# 1) Install all dependencies:
+# 1) Install all dependencies :
+*Note that this project uses Python 3
+
 pip install -r requirements.txt
 
 # 2) Download a pre-trained facenet model.
@@ -42,7 +44,11 @@ Graham
 Run the following script, if you want to customise the image size it crops to etc you can do so inside the align_dataset_mtcnn.py file.
 See the parse_arguments method for all the different possible commands
 
-src\align\align_dataset_mtcnn.py
+Go to the src folder
+
+In Windows Powershell run `$env:PYTHONPATH=(pwd)` or on UNIX systems run `PYTHONPATH=$(pwd)`
+
+Then run `python src\align\align_dataset_mtcnn.py`
 
 Your training_data_aligned folder should now have folders with images inside them. These images have been aligned to make it easier for the facenet network to analyse.
 Without this step facenet will not work correctly.
@@ -52,8 +58,10 @@ Note 2: This code uses MTCNN to identify faces in an image.
 
 # 5) Train the classifier (SVM Classifier)
 
-Run the following (which is just an easy to use wrapper for classifier.py):
-src\classifier_train.py
+While in the src folder run the following (which is just an easy to use wrapper for classifier.py):
+`python classifier_train.py`
+
+If you are running the project from a new terminal session you may need to se the PYTHONPATH variable again as in Step 4)
 
 For optimal performance you will need to tune the batch size depending on how much memory you have on your system.
 For a small amount of images any configuration works fine.
@@ -64,7 +72,13 @@ To see the different commands for fine tuning see the parse_arguments method in 
 
 ## a) Run on a video (saved video or webcam)
 
-run src\newglint.py
+Download version 1.6.0 of openh264 for you OS from https://github.com/cisco/openh264/releases and move it to the src folder. 
+Without this the code will run but the video won't be saved.
+
+
+Then while in the src folder run `python newglint.py`
+
+As mentioned earlier, if you opened the project from scratch you will need to set PYTHONPATH as mentioned in step 4
 
 First it downloads a video from YouTube into test_data/video, then runs the facenet + the classifier on the video playing at 5x speed.
 The video will run slowly because running facenet while playing the video is very computationally intensive, especially on a CPU.
@@ -74,15 +88,13 @@ A video recording output.avi will be saved which will playback at a faster speed
 If you want to use the webcam as an input or change the video speed or the video, please see the code under
 `if __name__ == "__main__":`
 
+
+To stop the video from playing click on the video screen and press `q`
 ## b) Run on images
 
-Select your test 
-# #
-Note that these files/folders are in the git ignore
-test_data/video/*
-training_data_aligned/*
-output.avi
-facenet_model/*
+Run  `align_dataset_mtcnn`, put the images into the `test/images` folder then run `classifier_test.py`
+
+* Note I'll be streamlining this later on
 
 # #
 Note that the images used for training were found public online through Google Image Search and the test video is downloaded from YouTube upon the program running.

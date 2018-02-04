@@ -23,8 +23,8 @@ def main(args):
 
     # Get the path of the classifier and load it
     project_root_folder = os.path.join(os.path.abspath(__file__), "..\\..")
-    print (project_root_folder)
-    classifier_path = os.path.join(project_root_folder, "\\trained_classifier\\newglint_classifier.pkl")
+    classifier_path = project_root_folder + "\\trained_classifier\\newglint_classifier.pkl"
+    print (classifier_path)
     with open(classifier_path, 'rb') as f:
         (model, class_names) = pickle.load(f)
         print("Loaded classifier file")
@@ -34,9 +34,9 @@ def main(args):
         sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options, log_device_placement=False))
         with sess.as_default():
             # Bounding box
-            pnet, rnet, onet = align.detect_face.create_mtcnn(sess, "src\\align")
+            pnet, rnet, onet = align.detect_face.create_mtcnn(sess, project_root_folder + "\\src\\align")
             # Get the path of the facenet model and load it
-            facenet_model_path = os.path.join(project_root_folder, "\\facenet_model\\20170512-110547\\20170512-110547.pb")
+            facenet_model_path = project_root_folder + "\\facenet_model\\20170512-110547\\20170512-110547.pb"
             facenet.load_model(facenet_model_path)
 
             images_placeholder = tf.get_default_graph().get_tensor_by_name("input:0")
@@ -52,7 +52,7 @@ def main(args):
             if args.webcam is True:
                 video_capture = cv2.VideoCapture(0)
             else:
-                video_path = os.getcwd() + "\\test_data\\video\\"
+                video_path = project_root_folder + "\\test_data\\video\\"
                 video_name = "graham_norton"
                 full_original_video_path_name = video_path + video_name + '.mp4'
                 video_capture_path = full_original_video_path_name
@@ -63,7 +63,8 @@ def main(args):
                 video_capture = cv2.VideoCapture(full_original_video_path_name)
             width = video_capture.get(cv2.CAP_PROP_FRAME_WIDTH)  # float
             height = video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT)  # float
-            video_recording = cv2.VideoWriter('output.avi', fourcc, 10, (int(width), int(height)))
+
+            video_recording = cv2.VideoWriter(project_root_folder + '\\output.avi', fourcc, 10, (int(width), int(height)))
 
             total_frames_passed = 0
 
